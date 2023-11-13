@@ -1,0 +1,51 @@
+@import '../../../../apollo/scss';
+
+.layout .bottom-menu {
+    box-shadow: 1px -1px 4px 1px var(--apollo-elevation-color-primary);
+    background-color: var(--apollo-background-color-secondary);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    @include border-top-radius(8px);
+
+    &__skeleton {
+        @include skeleton-bar();
+        width: 100%;
+        height: 60px;
+        position: fixed;
+    }
+
+    &__link {
+        @include fs($fs-h5);
+        font-weight: 400;
+        padding: 9px 0;
+        text-decoration: none;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: var(--apollo-background-color-primary);
+            color: var(--apollo-brand-light);
+            border-radius: 6px;
+
+            .apollo-icon {
+                fill: var(--apollo-brand-light);
+            }
+        }
+
+        &.active {
+            color: var(--apollo-brand);
+
+            .apollo-icon {
+                fill: var(--apollo-brand);
+            }
+        }
+    }
+}

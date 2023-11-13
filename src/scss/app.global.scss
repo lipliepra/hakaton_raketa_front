@@ -1,0 +1,16 @@
+@import 'normalize';
+@import 'grid';
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    @include custom-scrollbar;
+    @include fs($fs-body);
+    background-color: var(--apollo-background-color-primary);
+    height: 100%;
+    overflow-x: hidden;
+    min-width: 320px;
+}

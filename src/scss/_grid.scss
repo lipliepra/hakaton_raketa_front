@@ -1,0 +1,62 @@
+@import '../apollo/scss/mixins';
+
+h1 {
+    @include fs($fs-h1);
+}
+
+h2 {
+    @include fs($fs-h2);
+}
+
+h3 {
+    @include fs($fs-h3);
+}
+
+h4 {
+    @include fs($fs-h4);
+}
+
+h5 {
+    @include fs($fs-h5);
+}
+
+a {
+    @include fs($fs-link);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.container {
+    max-width: 1800px;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1 1 auto;
+    padding: 40px 20px;
+}
+
+.scroll-hidden {
+    overflow-y: hidden;
+    touch-action: none;
+}
+
+@include media($mobile-breakpoint) {
+    h1 {
+        @include fs($fs-h2);
+    }
+
+    h2 {
+        @include fs($fs-h3);
+    }
+
+    h3 {
+        @include fs($fs-h4);
+    }
+
+    h4, h5, h6 {
+        @include fs($fs-h5);
+    }
+
+    .container {
+        padding: 30px 20px 40px;
+    }
+}

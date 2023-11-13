@@ -1,0 +1,94 @@
+@import '../../scss/mixins';
+
+.ck {
+    &-editor {
+        overflow: hidden;
+        width: 100% !important;
+    }
+
+    &-toolbar {
+        @include border-top-radius(6px !important);
+        border: 1px solid var(--apollo-border-color-primary) !important;
+
+        &__separator {
+            background-color: var(--apollo-border-color-primary) !important;
+        }
+    }
+
+    &-tooltip {
+        display: none !important;
+    }
+
+    &-content {
+        @include fs($fs-body);
+        min-height: 200px;
+        border: 1px solid var(--apollo-border-color-primary) !important;
+        border-top: none !important;
+        @include border-bottom-radius(6px !important);
+
+        strong {
+            font-weight: bold;
+        }
+
+        i {
+            font-style: revert;
+        }
+
+        ol, ul {
+            list-style: revert;
+            padding-left: revert;
+        }
+
+        h2, h3, h4 {
+            font-style: revert;
+            font-size: revert;
+            font-weight: revert;
+        }
+    }
+
+    &-focused {
+        box-shadow: none !important;
+        border: none;
+    }
+
+    &-button {
+        cursor: pointer !important;
+    }
+
+    &-on {
+        cursor: pointer;
+        color: var(--apollo-brand) !important;
+        background-color: var(--apollo-background-color-primary) !important;
+
+        &:active, &:focus {
+            box-shadow: none !important;
+            border-color: var(--apollo-brand) !important;
+        }
+
+        &:hover {
+            background-color: var(--apollo-background-color-primary) !important;
+        }
+    }
+
+    &-off {
+        cursor: pointer;
+
+        &:active, &:focus {
+            box-shadow: none !important;
+            border-color: var(--apollo-brand) !important;
+        }
+
+        &:hover {
+            border-radius: $base-border-radius !important;
+            background-color: var(--apollo-brand-light) !important;
+        }
+    }
+
+    &-disabled {
+        &:hover, &:active, &:focus {
+            box-shadow: none !important;
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
+    }
+}

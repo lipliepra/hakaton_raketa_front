@@ -1,0 +1,23 @@
+@import '../../apollo/scss';
+
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+    background-color: var(--apollo-background-color-primary);
+
+    &__title {
+        @include fs($fs-h1);
+        margin-bottom: 40px;
+    }
+
+    @include media($mobile-breakpoint) {
+        padding-top: 60px;
+
+        &__title {
+            @include fs($fs-h2);
+            margin-bottom: 20px;
+        }
+    }
+}

@@ -1,0 +1,307 @@
+@import '../../apollo/scss/mixins';
+
+.apollo-module {
+    &__title {
+        @include fs($fs-h1);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        @include media($mobile-breakpoint) {
+            @include fs($fs-h2);
+        }
+    }
+
+    &__panel {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        &-title {
+            @include fs($fs-h2);
+            margin-bottom: 20px;
+
+            @include media($mobile-breakpoint) {
+                @include fs($fs-h3);
+            }
+        }
+
+        &-filters {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--apollo-divider-color-primary);
+
+            &_title {
+                @include fs($fs-h3);
+                margin-bottom: 10px;
+            }
+
+            &_content {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+
+                @include media($desktop-breakpoint) {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+
+                @include media($tablet-breakpoint) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @include media($mobile-breakpoint) {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            }
+        }
+    }
+
+    &__components {
+        &-accordions {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @include media($tablet-breakpoint) {
+                gap: 10px;
+            }
+        }
+
+        &-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+
+            @include media($tablet-breakpoint) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            @include media($mobile-breakpoint) {
+                grid-template-columns: repeat(1, 1fr);
+
+            }
+        }
+
+        &-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: flex-end;
+            gap: 20px;
+
+            @include media($tablet-breakpoint) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            @include media($mobile-breakpoint) {
+                grid-template-columns: repeat(1, 1fr);
+
+            }
+
+            &_label {
+                @include fs($fs-label);
+            }
+        }
+
+        &-checkbox {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            &_item {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            &_row {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                align-items: flex-end;
+                gap: 20px;
+
+                @include media($tablet-breakpoint) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @include media($mobile-breakpoint) {
+                    grid-template-columns: repeat(1, 1fr);
+
+                    .apollo-checkbox {
+                        &:nth-of-type(1) {
+                            order: 1;
+                        }
+
+                        &:nth-of-type(2) {
+                            order: 2;
+                        }
+
+                        &:nth-of-type(3) {
+                            order: 3;
+                        }
+
+                        &:nth-of-type(4) {
+                            order: 4;
+                        }
+
+                        &:nth-of-type(5) {
+                            order: 5;
+                        }
+
+                        &:nth-of-type(6) {
+                            order: 6;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-combobox {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            &_title {
+                @include fs($fs-label);
+                margin-bottom: 5px;
+            }
+
+            @include media($tablet-breakpoint) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        &-radio {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            &_title {
+                @include fs($fs-h3);
+
+                &:not(:first-child) {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    &__icons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @include media($desktop-breakpoint) {
+            gap: 20px;
+        }
+
+        &-elements {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 20px;
+
+            @include media($desktop-breakpoint) {
+                grid-template-columns: repeat(9, 1fr);
+            }
+
+            @include media($tablet-breakpoint) {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            @include media($mobile-breakpoint) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        &-filters {
+            &_content {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+
+                @include media($tablet-breakpoint) {
+                    display: flex;
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+                }
+
+                @include media($mobile-breakpoint) {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            &_item {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                @include media($tablet-breakpoint) {
+                    &:not(:last-child) {
+                        flex-direction: row;
+                        gap: 20px;
+                        width: calc(50% - 10px);
+                    }
+                }
+
+                @include media($mobile-breakpoint) {
+                    width: 100%;
+                }
+            }
+
+            &_label {
+                @include fs($fs-label);
+                margin-bottom: 5px;
+
+                @include media($mobile-breakpoint) {
+                    min-width: 100px;
+                }
+            }
+
+            .apollo-checkbox, .apollo-radio {
+                margin-top: 8px;
+
+                @include media($tablet-breakpoint) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &__icon {
+        padding: 10px;
+        border-radius: 6px;
+        background-color: var(--apollo-background-color-secondary);
+        box-shadow: 1px 1px 4px 1px var(--apollo-elevation-color-primary);
+        display: flex;
+        align-items: center;
+    }
+
+    &__container {
+        display: flex;
+        gap: 20px;
+
+        @include media($desktop-breakpoint) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &__content {
+        width: 70%;
+
+        @include media($desktop-breakpoint) {
+            width: 100%;
+        }
+    }
+
+    &__description {
+        width: 30% !important;
+        height: max-content;
+
+        @include media($desktop-breakpoint) {
+            width: 100% !important;
+        }
+    }
+}

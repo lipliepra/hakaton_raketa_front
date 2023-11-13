@@ -1,0 +1,22 @@
+@import '../../../apollo/scss';
+
+.logo {
+    cursor: pointer;
+    line-height: 1;
+    font-family: $font-family-koplok !important;
+    text-decoration: none;
+    display: flex;
+    gap: 1px;
+
+    &--sm {
+        @include fs($fs-h3);
+    }
+
+    &--md {
+        @include fs($fs-h2);
+    }
+
+    &--lg {
+        @include fs($fs-h1);
+    }
+}

@@ -1,0 +1,1 @@
+export const VALUE_LENGTH_BEFORE_SEARCH = 3;

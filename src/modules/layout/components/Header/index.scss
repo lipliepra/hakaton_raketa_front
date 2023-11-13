@@ -1,0 +1,282 @@
+@import '../../../../apollo/scss';
+
+.layout .header {
+    position: fixed;
+    background-color: var(--apollo-background-color-secondary);
+    box-shadow: 1px 1px 4px 1px var(--apollo-elevation-color-primary);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+
+    &__skeleton {
+        @include skeleton-bar();
+        height: 70px;
+        width: 100%;
+        position: fixed;
+
+        @include media($mobile-breakpoint) {
+            height: 60px;
+        }
+    }
+
+    &__container {
+        display: flex;
+        align-items: center;
+        max-width: 1800px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+
+        .apollo-button__skeleton {
+            width: 190px;
+        }
+    }
+
+    &__navigation {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin: 0 auto 0 50px;
+
+        &-link {
+            @include fs($fs-body);
+            text-decoration: none;
+            padding: 23px 0;
+            transition: 0.3s;
+
+            &.active, &.active:hover {
+                color: var(--apollo-brand);
+            }
+
+            &:hover {
+                color: var(--apollo-brand-light);
+            }
+        }
+    }
+
+    &__dropdown {
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition: 0.3s;
+        padding: 13px 0;
+        cursor: pointer;
+
+        @include media($mobile-breakpoint) {
+            padding: 8px 0;
+        }
+
+        &:hover .header__dropdown-activator {
+            background-color: var(--apollo-background-color-primary);
+
+            .apollo-icon {
+                fill: var(--apollo-brand-light);
+            }
+        }
+
+        &-activator {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &.active {
+                background-color: var(--apollo-background-color-primary);
+
+                .apollo-icon {
+                    fill: var(--apollo-brand-light);
+                }
+            }
+        }
+
+        &-list {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            width: 220px;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background-color: var(--apollo-background-color-secondary);
+            border: 1px solid var(--apollo-border-color-tertiary);
+            border-radius: 6px;
+            z-index: 12;
+            top: 65px;
+            right: 0;
+            transition: 0.3s;
+            overflow: hidden;
+
+            @include media($mobile-breakpoint) {
+                visibility: visible;
+                opacity: 1;
+                position: fixed;
+                top: 60px;
+                width: 100%;
+                left: 0;
+                right: 0;
+                gap: 0;
+                border: none;
+                max-height: 0;
+                padding: 0 10px;
+                @include border-top-radius(0px);
+                @include border-bottom-radius(8px);
+            }
+
+            &:before {
+                content: '';
+                border: none;
+                width: 0;
+                height: 0;
+                opacity: 0;
+                transition: 0.3s;
+
+                @include media($mobile-breakpoint) {
+                    top: 60px;
+                    left: 20px;
+                    position: fixed;
+                    width: calc(100vw - 40px);
+                    border-top: 1px solid var(--apollo-border-color-secondary);
+                    overflow: hidden;
+                }
+            }
+
+            &.opened {
+                visibility: visible;
+                opacity: 1;
+
+                @include media($mobile-breakpoint) {
+                    padding: 10px;
+                    max-height: 300px;
+                    box-shadow: 1px 4px 4px 1px var(--apollo-elevation-color-primary);
+                }
+
+                &:before {
+                    @include media($mobile-breakpoint) {
+                        opacity: 1;
+                        overflow: visible;
+                    }
+                }
+            }
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 2px 5px 10px;
+            color: var(--apollo-font-color-tertiary);
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+
+            @include media($mobile-breakpoint) {
+                padding: 8px 10px;
+            }
+
+            &-icon {
+                fill: var(--apollo-icon-color-tertiary);
+            }
+
+            &:hover {
+                background-color: var(--apollo-background-color-primary);
+                color: var(--apollo-brand-light);
+
+                .header__dropdown-item-icon {
+                    fill: var(--apollo-brand-light);
+                }
+            }
+
+            &_image {
+                min-width: 30px;
+                max-height: 30px;
+                border-radius: 6px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 5px;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                .apollo-icon {
+                    fill: var(--apollo-icon-color-tertiary);
+                }
+            }
+
+            &_name {
+                @include fs($fs-h4);
+                display: inline;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: inherit;
+                white-space: nowrap;
+                max-width: 100%;
+            }
+
+            &_caption {
+                @include fs($fs-h5, var(--apollo-font-color-tertiary));
+                font-weight: 400;
+                transition: 0.3s;
+            }
+
+            &_profile {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 6px;
+
+                &:hover .header__dropdown-item-caption {
+                    color: var(--apollo-brand-light);
+                }
+            }
+        }
+    }
+
+    &__toolbar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: 6px;
+
+        @include media($mobile-breakpoint) {
+            margin-left: 0;
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--apollo-background-color-primary);
+
+                .apollo-icon {
+                    fill: var(--apollo-brand-light);
+                }
+            }
+        }
+
+        &-login-button {
+            min-width: 190px;
+            margin-left: 10px;
+        }
+    }
+
+    .logo {
+        @include media($desktop-breakpoint) {
+            margin-right: auto;
+        }
+    }
+}
