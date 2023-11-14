@@ -1,13 +1,5 @@
-import React, {
-    lazy,
-    useEffect,
-} from 'react';
-import {
-    Route,
-    Routes,
-    useLocation,
-    useNavigate,
-} from 'react-router-dom';
+import React, { lazy, useEffect } from 'react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import { ROUTING_URLS } from '../../../common/constants/urls';
 import { AuthModes } from '../enums';

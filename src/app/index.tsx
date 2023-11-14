@@ -1,28 +1,15 @@
-import React, {
-    FC,
-    Suspense,
-} from 'react';
-import {
-    Routes,
-    Route,
-} from 'react-router-dom';
+import React, { FC, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import { Preloader } from '../common/components/Preloader';
 import { AuthLazy } from '../modules/auth/entry';
 import { Routing } from './routing';
 
 export const App: FC = () => (
-    <Suspense fallback={<Preloader />}>
+    <Suspense fallback={'Загрузка..'}>
         <Routes>
-            <Route
-                path='/*'
-                element={<Routing />}
-            />
+            <Route path="/*" element={<Routing />} />
 
-            <Route
-                path='auth'
-                element={<AuthLazy />}
-            />
+            <Route path="auth" element={<AuthLazy />} />
         </Routes>
     </Suspense>
 );

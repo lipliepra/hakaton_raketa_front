@@ -1,17 +1,11 @@
-import {
-    createSlice,
-    PayloadAction,
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RuntimeStatuses } from '../../../../common/enums';
 import { APP_DEFAULT_STATE } from '../store/initial';
 
 export const {
     reducer: appReducer,
-    actions: {
-        setStatus,
-        setErrorMessage,
-    },
+    actions: { setStatus, setErrorMessage }
 } = createSlice({
     name: 'auth/app',
     initialState: APP_DEFAULT_STATE,
@@ -21,6 +15,6 @@ export const {
         },
         setErrorMessage: (state, { payload }: PayloadAction<string>) => {
             state.errorMessage = payload;
-        },
-    },
+        }
+    }
 });

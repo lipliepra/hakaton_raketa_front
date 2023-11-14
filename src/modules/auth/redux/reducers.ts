@@ -7,5 +7,5 @@ import { profileReducer } from './slices/profileSlice';
 export const authReducers = combineReducers({
     app: appReducer,
     profile: profileReducer,
-    forms: formsReducer,
+    forms: formsReducer
 });

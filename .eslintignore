@@ -4,8 +4,6 @@ package-lock.json
 .env.development
 .env.production
 babel.config.json
-editorConfig.xml
-.editorconfig
 .eslintrc
 .idea
 .storybook
@@ -14,5 +12,3 @@ node_modules/*
 config/*
 public/*
 scripts/*
-src/react-app-env.d.ts
-src/reportWebVitals.ts

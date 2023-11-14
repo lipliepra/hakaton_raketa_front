@@ -20,19 +20,6 @@ export function buildLoaders(options: IBuildOptions): webpack.RuleSetRule[] {
                     '@babel/preset-env',
                     '@babel/preset-react',
                 ],
-                plugins: [
-                    [
-                        'i18next-extract',
-                        {
-                            locales: [
-                                'ru',
-                                'en',
-                            ],
-                            valueAsDefaultKey: true,
-                            outputPath: 'public/locales/{{locale}}/{{ns}}.json',
-                        },
-                    ],
-                ],
             },
         },
     };

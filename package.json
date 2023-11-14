@@ -9,15 +9,11 @@
     "test": "node scripts/test.js",
     "lint": "eslint src"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test"
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/register": "^7.22.15",
     "@reduxjs/toolkit": "^1.9.6",
     "@skbkontur/react-ui": "^4.17.3",
     "axios": "1.4.0",
@@ -56,9 +52,8 @@
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.8.1",
     "dotenv-webpack": "8.0.1",
-    "eslint": "^8.2.0",
+    "eslint": "^8.41.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.25.3",
@@ -78,8 +73,6 @@
     "sass": "1.63.6",
     "sass-loader": "13.3.2",
     "style-loader": "3.3.3",
-    "stylelint": "15.10.2",
-    "stylelint-config-standard-scss": "10.0.0",
     "ts-loader": "9.4.4",
     "ts-node": "10.9.1",
     "typescript": "^5.2.2",

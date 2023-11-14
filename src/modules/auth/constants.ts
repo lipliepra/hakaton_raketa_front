@@ -5,5 +5,5 @@ export const DEFAULT_FORM: IForm = {
     status: RuntimeStatuses.Ready,
     errorMessage: '',
     formErrors: {},
-    fields: {},
+    fields: {}
 };

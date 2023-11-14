@@ -17,9 +17,7 @@
             "node"
         ],
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "include": ["src"],
-        "exclude": ["node_modules", "dist"]
+        "allowSyntheticDefaultImports": true
     },
     "ts-node": {
         "compilerOptions": {
