@@ -12,9 +12,7 @@ export default () => {
 
             <br />
 
-            <div onClick={() => navigate(ROUTING_URLS.URL_HOME)}>
-                Вернуться на главную
-            </div>
+            <div onClick={() => navigate(ROUTING_URLS.URL_HOME)}>Вернуться на главную</div>
         </Fragment>
     );
 };
