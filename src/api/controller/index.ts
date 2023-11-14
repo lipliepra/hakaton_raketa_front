@@ -4,7 +4,6 @@ import axios, {
 } from 'axios';
 
 import { __BACK_API_ORIGIN__ } from '../../../config/environment';
-import { lStorage } from '../../apollo/utils/lStorage';
 import { IApiResponse } from '../../common/types';
 import {
     IControllerData,
@@ -22,7 +21,7 @@ export const config: IControllerOptions = {
 const controller = axios.create(config) as AxiosStatic;
 
 controller.interceptors.request.use((config) => {
-    const token = lStorage.getJson('token');
+    const token = localStorage.getItem('token');
 
     if (token) config.headers!.Authorization = `Bearer ${token}`;
 

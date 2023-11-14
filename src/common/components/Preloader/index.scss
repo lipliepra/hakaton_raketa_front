@@ -1,5 +1,3 @@
-@import '../../../apollo/scss/mixins';
-
 .preloader {
     position: fixed;
     width: 100vw;
@@ -10,7 +8,7 @@
     align-items: center;
     gap: 40px;
     justify-content: center;
-    background-color: var(--apollo-background-color-primary);
+    background-color: #ffffff;
 
     &-ball {
         display: block;

@@ -4,7 +4,7 @@ import {
 } from 'react';
 import { Reducer } from 'redux';
 
-import { TFunc } from '../apollo/types';
+import { TFunc } from '../common/types';
 import { store } from './index';
 
 export const useStore: TFunc<[string, Reducer, boolean?], boolean> = (moduleName, reducer, withDelete = true) => {

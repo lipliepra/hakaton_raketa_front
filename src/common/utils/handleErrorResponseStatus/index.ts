@@ -1,5 +1,4 @@
-import { TFunc } from '../../../apollo/types';
-
+import { TFunc } from '../../types';
 import { IHandleResponseErrorStatus } from './types';
 
 export const handleErrorResponseStatus: TFunc<[IHandleResponseErrorStatus]> = ({ errorResponse, throwException, options }) => {

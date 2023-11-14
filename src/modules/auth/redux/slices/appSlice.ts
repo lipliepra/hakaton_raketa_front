@@ -3,9 +3,8 @@ import {
     PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { RuntimeStatuses } from '../../../../apollo/enums';
+import { RuntimeStatuses } from '../../../../common/enums';
 import { APP_DEFAULT_STATE } from '../store/initial';
-
 
 export const {
     reducer: appReducer,

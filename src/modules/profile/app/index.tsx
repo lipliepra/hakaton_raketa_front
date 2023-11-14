@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 
 const ProfilePageLazy = lazy(() => import('../pages/ProfilePage'));
-const FavoritesPageLazy = lazy(() => import('../pages/FavoritesPage'));
 const SettingsPageLazy = lazy(() => import('../pages/SettingsPage'));
 
 export default () => (
@@ -13,11 +12,6 @@ export default () => (
         <Route
             path=''
             element={<ProfilePageLazy />}
-        />
-
-        <Route
-            path='favorites'
-            element={<FavoritesPageLazy />}
         />
 
         <Route

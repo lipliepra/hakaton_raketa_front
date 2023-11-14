@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
+import React, {
+    lazy,
+    useEffect,
+} from 'react';
 import {
+    Route,
+    Routes,
     useLocation,
     useNavigate,
 } from 'react-router-dom';
 
-import { Button } from '../../../apollo/components/Button';
 import { ROUTING_URLS } from '../../../common/constants/urls';
-import { useActions } from '../../../common/hooks/useActions';
-import { AuthLayout as Layout } from '../components/Layout';
 import { AuthModes } from '../enums';
 
-import { profileActions } from '../redux/actions';
-import '../index.scss';
+const LoginPageLazy = lazy(() => import('../pages/LoginPage'));
+const SignupPageLazy = lazy(() => import('../pages/SignupPage'));
 
 export default () => {
-    const { setIsAuth } = useActions(profileActions);
-
     const { search } = useLocation();
 
     const navigate = useNavigate();
@@ -28,22 +28,17 @@ export default () => {
         }
     }, [mode]);
 
-    const setIsAuthHandler = () => {
-        setIsAuth(true);
-        navigate('/main');
-    };
-
     return (
-        <Layout>
-            <h1>Авторизация</h1>
-
-            <Button
-                content='Войти'
-                pattern='primary'
-                size='md'
-                onClick={setIsAuthHandler}
-                dataTestId=''
+        <Routes>
+            <Route
+                path={ROUTING_URLS.URL_AUTH_LOGIN}
+                element={<LoginPageLazy />}
             />
-        </Layout>
+
+            <Route
+                path={ROUTING_URLS.URL_AUTH_SIGNUP}
+                element={<SignupPageLazy />}
+            />
+        </Routes>
     );
 };

@@ -1,7 +1,4 @@
-import {
-    createSlice,
-    PayloadAction,
-} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { FORMS_DEFAULT_STATE } from '../store/initial';
 

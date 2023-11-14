@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
+import { useDispatch } from 'react-redux';
+import { ThunkAction } from 'redux-thunk';
 import {
     ActionCreatorsMapObject,
     bindActionCreators,
 } from 'redux';
-import { useDispatch } from 'react-redux';
-import { ThunkAction } from 'redux-thunk';
 
 type TUseActions<M extends ActionCreatorsMapObject<any>> = {
     [N in keyof M]: ReturnType<M[N]> extends ThunkAction<any, any, any, any>

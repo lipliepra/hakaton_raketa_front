@@ -1,7 +1,6 @@
-import { NOOP } from '../../../apollo/constants';
-import { TFunc } from '../../../apollo/types';
 import { handleErrorResponseStatus } from '../handleErrorResponseStatus';
 import { ICatchResponse } from './types';
+import { TFunc } from '../../types';
 
 export const catchResponse: TFunc<[TFunc<[any]>, string], TFunc<[ICatchResponse, TFunc<[void]>?], TFunc<[any]>>> = (
     onRunError,
@@ -10,20 +9,10 @@ export const catchResponse: TFunc<[TFunc<[any]>, string], TFunc<[ICatchResponse,
         requestType,
         actionName,
         runError = null,
-        runValidation = NOOP,
-        runSkip = NOOP,
-    // TODO: Подумать что оставить errorModal или Toast. Если Toast, то выпилить runFail
-        runFail = NOOP,
-        redirectForbidden = NOOP,
-    }, dispatch = NOOP,
+        runValidation = () => {},
+    }, dispatch = () => {},
 ) => (error) => {
-    if (error.code === 'ERR_NETWORK') {
-        runFail(error);
-        return;
-        // return takeToast('error', 'Ошибка соединения с сервером!');
-    }
-
-    if (error.code === 'ERR_BAD_RESPONSE') {
+    if (error.code === 'ERR_BAD_RESPONSE' || error.code === 'ERR_NETWORK') {
         return dispatch(onRunError(error));
         // return runFail(error);
     }
@@ -41,8 +30,6 @@ export const catchResponse: TFunc<[TFunc<[any]>, string], TFunc<[ICatchResponse,
                 ? runError
                 : onRunError(error)),
             runValidation: () => runValidation(error),
-            runSkip: () => runSkip(error),
-            redirectForbidden: () => redirectForbidden(error),
         },
     });
 };

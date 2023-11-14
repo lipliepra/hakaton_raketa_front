@@ -1,25 +1,17 @@
-import { RuntimeStatuses } from '../../apollo/enums';
-import { TNullable } from '../../apollo/types';
+import { RuntimeStatuses } from '../../common/enums';
+import { TNullable } from '../../common/types';
 
 export interface IProfileData {
     id: string;
     firstName: string;
-    lastName: string;
     login: string;
-    imageId: TNullable<string>;
-    birthday: TNullable<string>;
-    accessRoles: TNullable<IRoles>;
-}
-
-interface IRoles {
-    isAdmin: boolean;
-    isModer: boolean;
+    password: string;
 }
 
 export interface IForm {
     status: RuntimeStatuses;
     errorMessage: string;
-    fields: { [key: string]: any };
+    fields: { [key: string]: string };
     formErrors: { [key: string]: string };
 }
 

@@ -1,8 +1,5 @@
-import { RuntimeStatuses } from '../../../../apollo/enums';
-import {
-    DEFAULT_FORM,
-    DEFAULT_PROFILE_DATA,
-} from '../../constants';
+import { RuntimeStatuses } from '../../../../common/enums';
+import { DEFAULT_FORM } from '../../constants';
 import {
     IAppState,
     IFormsState,
@@ -13,18 +10,18 @@ import {
 export const APP_DEFAULT_STATE: IAppState = {
     status: RuntimeStatuses.BeforeInitial,
     errorMessage: '',
-}
+};
 
 export const PROFILE_DEFAULT_STATE: IProfileState = {
-    data: DEFAULT_PROFILE_DATA,
+    data: null,
     isAuth: false,
-}
+};
 
 export const FORMS_DEFAULT_STATE: IFormsState = {
     login: DEFAULT_FORM,
     register: DEFAULT_FORM,
     restorePassword: DEFAULT_FORM,
-}
+};
 
 export const INITIAL_STATE: IState = {
     app: APP_DEFAULT_STATE,
