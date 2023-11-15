@@ -21,7 +21,7 @@ export function buildPlugins(options: IBuildOptions) {
             __IS_DEV__: JSON.stringify(options.isDevelopment),
         }),
         new webpack.EnvironmentPlugin({...process.env}),
-        new Dotenv({path: `../.env.${options.envFileName}`}),
+        new Dotenv({path: `./.env.${options.envFileName}`}),
     ];
 
     if (options.isDevelopment) {

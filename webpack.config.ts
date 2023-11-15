@@ -2,18 +2,14 @@ import webpack from 'webpack';
 import path from 'path';
 
 import { buildWebpackConfig } from './webpack/buildWebpackConfig';
-import {
-    IBuildEnv,
-    IBuildPaths,
-    TBuildMode,
-} from './webpack/types/types';
+import { IBuildEnv, IBuildPaths, TBuildMode } from './webpack/types/types';
 
 export default (env: IBuildEnv) => {
     const paths: IBuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
-        src: path.resolve(__dirname, 'src'),
+        src: path.resolve(__dirname, 'src')
     };
 
     const mode: TBuildMode = env.mode || 'development';
@@ -26,6 +22,6 @@ export default (env: IBuildEnv) => {
         paths,
         isDevelopment,
         port: PORT,
-        envFileName,
+        envFileName
     }) as webpack.Configuration;
 };

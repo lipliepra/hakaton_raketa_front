@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-export const AuthLazy = lazy(() => import('./app'));
+export const AuthLazy = lazy(() => import('./components/Routing'));
 
 export { authReducers } from './redux/reducers';
 

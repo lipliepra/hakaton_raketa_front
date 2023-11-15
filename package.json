@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/register": "^7.22.15",
     "@reduxjs/toolkit": "^1.9.6",
+    "@skbkontur/icons": "^1.7.1",
     "@skbkontur/react-ui": "^4.17.3",
     "axios": "1.4.0",
     "lodash": "^4.17.21",

@@ -1,3 +1,3 @@
 import { lazy } from 'react';
 
-export const HomeLazy = lazy(() => import('./app'));
+export const HomeLazy = lazy(() => import('./components/Routing'));

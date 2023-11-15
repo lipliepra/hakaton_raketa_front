@@ -33,11 +33,21 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "import/extensions": "off",
-
         "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-shadow": "off",
+        "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/ban-ts-comment": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".ts", "tsx"] }],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".ts",
+                    "tsx"
+                ]
+            }
+        ],
         "prettier/prettier": [
             "error",
             {
