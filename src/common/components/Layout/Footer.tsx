@@ -8,7 +8,7 @@ export const Footer: FC = () => {
     return (
         <div className="layout-footer">
             <div className="layout-footer__container">
-                <span className="layout-footer__logo">СКБ Контур</span>
+                <span className="layout-footer__logo">Название проекта</span>
 
                 <div className="layout-footer__navigation">
                     {FOOTER_NAVIGATION.map((item) => (
