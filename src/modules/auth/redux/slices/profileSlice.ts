@@ -5,7 +5,7 @@ import { IProfileData } from '../../types';
 
 export const {
     reducer: profileReducer,
-    actions: { setProfileData, setIsAuth }
+    actions: { setProfileData, setIsAuth, setToken }
 } = createSlice({
     name: 'auth/profile',
     initialState: PROFILE_DEFAULT_STATE,
@@ -15,6 +15,9 @@ export const {
         },
         setIsAuth: (state, { payload }: PayloadAction<boolean>) => {
             state.isAuth = payload;
+        },
+        setToken: (state, { payload }: PayloadAction<string>) => {
+            state.token = payload;
         }
     }
 });

@@ -1,10 +1,10 @@
-import { Button, IconButton } from '@mui/material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ROUTING_URLS } from '../../constants/urls';
 import { isAuthSelector } from '../../selectors';
+import { Button } from '@skbkontur/react-ui';
+import { People1Icon } from '@skbkontur/icons';
 
 export const Header: FC = () => {
     const isAuth = useSelector(isAuthSelector);
@@ -14,13 +14,17 @@ export const Header: FC = () => {
     const renderContent = () => {
         if (isAuth) {
             return (
-                <IconButton onClick={() => navigate(ROUTING_URLS.URL_PROFILE)}>
-                    <AccountCircleIcon />
-                </IconButton>
+                <Button use="text" size="medium" onClick={() => navigate(ROUTING_URLS.URL_PROFILE)}>
+                    <People1Icon size={25} />
+                </Button>
             );
         }
 
-        return <Button onClick={() => navigate(ROUTING_URLS.URL_AUTH_LOGIN)}>Войти</Button>;
+        return (
+            <Button use="primary" size="medium" onClick={() => navigate(ROUTING_URLS.URL_AUTH_LOGIN)}>
+                Войти
+            </Button>
+        );
     };
 
     return (

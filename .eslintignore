@@ -8,7 +8,7 @@ babel.config.json
 .idea
 .storybook
 .config
-node_modules/*
+/node_modules
 config/*
 public/*
 scripts/*

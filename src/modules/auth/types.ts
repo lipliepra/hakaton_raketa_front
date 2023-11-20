@@ -1,18 +1,11 @@
 import { RuntimeStatuses } from '../../common/enums';
 import { TNullable } from '../../common/types';
 
+export type TFormFields = 'login' | 'password';
+
 export interface IProfileData {
-    id: string;
-    firstName: string;
     login: string;
     password: string;
-}
-
-export interface IForm {
-    status: RuntimeStatuses;
-    errorMessage: string;
-    fields: { [key: string]: string };
-    formErrors: { [key: string]: string };
 }
 
 export interface IAppState {
@@ -22,17 +15,19 @@ export interface IAppState {
 
 export interface IProfileState {
     data: TNullable<IProfileData>;
+    token: string;
     isAuth: boolean;
 }
 
 export interface IFormsState {
-    login: IForm;
-    register: IForm;
-    restorePassword: IForm;
+    status: RuntimeStatuses;
+    errorMessage: string;
+    fields: { login: string; password: string };
+    formErrors: { [key: string]: string };
 }
 
 export interface IState {
     app: IAppState;
     profile: IProfileState;
-    forms: IFormsState;
+    form: IFormsState;
 }

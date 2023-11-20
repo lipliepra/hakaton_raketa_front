@@ -1,75 +1,60 @@
+import { Button, Input } from '@skbkontur/react-ui';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField, Paper, Box, Grid, Typography } from '@mui/material';
 
 import { useActions } from '../../../common/hooks/useActions';
-import { profileActions } from '../redux/actions';
+import { formActions } from '../redux/actions';
+import { loginSelector, passwordSelector } from '../redux/store/selectors';
+import { TFormFields } from '../types';
 
 export default () => {
+    const login = useSelector(loginSelector);
+    const password = useSelector(passwordSelector);
+
     const navigate = useNavigate();
 
-    const { setIsAuth } = useActions(profileActions);
+    const { submitLogin, updateField } = useActions(formActions);
+
+    const updateFieldHandler = (field: TFormFields) => (value: string) => {
+        updateField({
+            field,
+            value
+        });
+    };
 
     const loginHandler = () => {
-        setIsAuth(true);
-        navigate('/');
+        submitLogin().then((response) => {
+            if (response) navigate('/');
+        });
     };
 
     return (
-        <Grid container className="auth__layout">
-            <Grid item xs={false} sm={0} md={7} sx={{ backgroundColor: (t) => t.palette.grey[400] }} />
+        <div className="auth">
+            <div className="auth__container">
+                <h2 className="auth__title">Авторизация</h2>
 
-            <Grid item sm={12} md={5} component={Paper} elevation={6} square>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: '100%'
-                    }}
-                >
-                    <Typography component="h1" variant="h5">
-                        Авторизация
-                    </Typography>
+                <Input
+                    className="input auth__field"
+                    size="medium"
+                    value={login}
+                    placeholder="Введите логин"
+                    width="100%"
+                    onValueChange={updateFieldHandler('login')}
+                />
 
-                    <Box component="form" noValidate sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="userName"
-                            label="Логин"
-                            name="userName"
-                            autoFocus
-                            autoComplete="login"
-                        />
+                <Input
+                    className="input auth__field"
+                    size="medium"
+                    value={password}
+                    width="100%"
+                    placeholder="Введите пароль"
+                    onValueChange={updateFieldHandler('password')}
+                />
 
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Пароль"
-                            type="password"
-                            id="password"
-                            autoComplete="current-passoword"
-                        />
-
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            onClick={loginHandler}
-                            sx={{
-                                mt: 3,
-                                mb: 2
-                            }}
-                        >
-                            Войти
-                        </Button>
-                    </Box>
-                </Box>
-            </Grid>
-        </Grid>
+                <Button size="medium" use="primary" onClick={loginHandler}>
+                    Войти
+                </Button>
+            </div>
+        </div>
     );
 };
