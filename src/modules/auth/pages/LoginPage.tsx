@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { useActions } from '../../../common/hooks/useActions';
 import { loginFormActions } from '../redux/actions';
-import { loginSelector, passwordSelector } from '../redux/store/selectors';
+import { loginFormLoginSelector, loginFormPasswordSelector } from '../redux/store/selectors';
 import { TLoginFormFields } from '../types';
 
 export default () => {
-    const login = useSelector(loginSelector);
-    const password = useSelector(passwordSelector);
+    const login = useSelector(loginFormLoginSelector);
+    const password = useSelector(loginFormPasswordSelector);
 
     const navigate = useNavigate();
 
