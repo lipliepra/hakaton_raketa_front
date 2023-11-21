@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { useActions } from '../../../common/hooks/useActions';
-import { formActions } from '../redux/actions';
+import { loginFormActions } from '../redux/actions';
 import { loginSelector, passwordSelector } from '../redux/store/selectors';
-import { TFormFields } from '../types';
+import { TLoginFormFields } from '../types';
 
 export default () => {
     const login = useSelector(loginSelector);
@@ -13,17 +13,17 @@ export default () => {
 
     const navigate = useNavigate();
 
-    const { submitLogin, updateField } = useActions(formActions);
+    const { submitLoginForm, updateLoginFormField } = useActions(loginFormActions);
 
-    const updateFieldHandler = (field: TFormFields) => (value: string) => {
-        updateField({
+    const updateFieldHandler = (field: TLoginFormFields) => (value: string) => {
+        updateLoginFormField({
             field,
             value
         });
     };
 
     const loginHandler = () => {
-        submitLogin().then((response) => {
+        submitLoginForm().then((response) => {
             if (response) navigate('/');
         });
     };

@@ -1,15 +1,40 @@
 import { API_CONTROLLER } from '../../../api/controller';
-import { IResponseData, ThunkActionPromise } from '../../../common/types';
+import { RuntimeStatuses } from '../../../common/enums';
+import { IResponseData, TApiResponseError, ThunkActionBase, ThunkActionPromise } from '../../../common/types';
+import { catchResponse } from '../../../common/utils/catchResponse';
+import { saveMessageByError } from '../../../common/utils/saveMessageByError';
 import { IRootState } from '../../../store/types';
 import { ENDPOINTS } from './api/endpoints';
-import { updateField } from './slices/formSlice';
-import { setProfileData, setIsAuth, setToken } from './slices/profileSlice';
+import { setAppStatus, setErrorMessage } from './slices/appSlice';
+import { setLoginFormStatus, updateLoginFormField } from './slices/loginFormSlice';
+import { setIsAuth, setProfileData, setToken } from './slices/profileSlice';
 import { fieldsSelector } from './store/selectors';
 
-const submitLogin = (): ThunkActionPromise<IRootState, boolean> => (dispatch, getState) => {
+const onRunError =
+    (error: TApiResponseError): ThunkActionBase<IRootState> =>
+    (dispatch) => {
+        dispatch(setAppStatus(RuntimeStatuses.Error));
+        dispatch(setErrorMessage(saveMessageByError(error)));
+    };
+
+const closeErrorModal = (): ThunkActionBase<IRootState> => (dispatch) => {
+    dispatch(setAppStatus(RuntimeStatuses.Ready));
+    dispatch(setErrorMessage(''));
+};
+
+const submitLoginForm = (): ThunkActionPromise<IRootState, boolean> => (dispatch, getState) => {
     const fields = fieldsSelector(getState());
 
-    return API_CONTROLLER.post<IResponseData<{ token: string }>>(ENDPOINTS.login, { ...fields })
+    const data = {
+        username: fields.login,
+        password: fields.password
+    };
+
+    const onCatch = catchResponse(onRunError);
+
+    dispatch(setLoginFormStatus(RuntimeStatuses.Loading));
+
+    return API_CONTROLLER.post<IResponseData<{ token: string }>>(ENDPOINTS.login, data)
         .then((response) => {
             const { result } = response.data;
 
@@ -17,16 +42,27 @@ const submitLogin = (): ThunkActionPromise<IRootState, boolean> => (dispatch, ge
                 dispatch(setIsAuth(true));
                 dispatch(setProfileData(fields));
                 dispatch(setToken(result.token));
+
+                dispatch(setLoginFormStatus(RuntimeStatuses.Ready));
             }
         })
-        .catch(() => {
-            // TODO: впендюрить onCatch
-        });
+        .catch(
+            onCatch({
+                runError: (error) => {
+                    dispatch(onRunError(error));
+                    dispatch(setLoginFormStatus(RuntimeStatuses.Ready));
+                }
+            })
+        );
 };
 
-export const formActions = {
-    updateField,
-    submitLogin
+export const appActions = {
+    closeErrorModal
+};
+
+export const loginFormActions = {
+    updateLoginFormField,
+    submitLoginForm
 };
 
 export const profileActions = {

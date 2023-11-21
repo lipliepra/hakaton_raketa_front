@@ -1,5 +1,5 @@
 import { RuntimeStatuses } from '../../../../common/enums';
-import { IAppState, IFormsState, IProfileState, IState } from '../../types';
+import { IAppState, ILoginFormState, IProfileState, IState } from '../../types';
 
 export const APP_DEFAULT_STATE: IAppState = {
     status: RuntimeStatuses.BeforeInitial,
@@ -12,7 +12,7 @@ export const PROFILE_DEFAULT_STATE: IProfileState = {
     isAuth: false
 };
 
-export const FORM_DEFAULT_STATE: IFormsState = {
+export const LOGIN_FORM_DEFAULT_STATE: ILoginFormState = {
     status: RuntimeStatuses.Ready,
     errorMessage: '',
     formErrors: {},
@@ -25,5 +25,5 @@ export const FORM_DEFAULT_STATE: IFormsState = {
 export const INITIAL_STATE: IState = {
     app: APP_DEFAULT_STATE,
     profile: PROFILE_DEFAULT_STATE,
-    form: FORM_DEFAULT_STATE
+    loginForm: LOGIN_FORM_DEFAULT_STATE
 };

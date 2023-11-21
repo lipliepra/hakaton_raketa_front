@@ -1,7 +1,7 @@
 import { RuntimeStatuses } from '../../common/enums';
 import { TNullable } from '../../common/types';
 
-export type TFormFields = 'login' | 'password';
+export type TLoginFormFields = 'login' | 'password';
 
 export interface IProfileData {
     login: string;
@@ -19,7 +19,7 @@ export interface IProfileState {
     isAuth: boolean;
 }
 
-export interface IFormsState {
+export interface ILoginFormState {
     status: RuntimeStatuses;
     errorMessage: string;
     fields: { login: string; password: string };
@@ -29,5 +29,5 @@ export interface IFormsState {
 export interface IState {
     app: IAppState;
     profile: IProfileState;
-    form: IFormsState;
+    loginForm: ILoginFormState;
 }

@@ -5,12 +5,12 @@ import { APP_DEFAULT_STATE } from '../store/initial';
 
 export const {
     reducer: appReducer,
-    actions: { setStatus, setErrorMessage }
+    actions: { setAppStatus, setErrorMessage }
 } = createSlice({
     name: 'auth/app',
     initialState: APP_DEFAULT_STATE,
     reducers: {
-        setStatus: (state, { payload }: PayloadAction<RuntimeStatuses>) => {
+        setAppStatus: (state, { payload }: PayloadAction<RuntimeStatuses>) => {
             state.status = payload;
         },
         setErrorMessage: (state, { payload }: PayloadAction<string>) => {
