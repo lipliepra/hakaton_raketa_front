@@ -4,7 +4,7 @@ package-lock.json
 .env.development
 .env.production
 babel.config.json
-.eslintrc
+.eslintrc.js
 .idea
 .storybook
 .config

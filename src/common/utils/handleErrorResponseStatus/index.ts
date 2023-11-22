@@ -1,7 +1,10 @@
 import { TFunc } from '../../types';
 import { IHandleResponseErrorStatus } from './types';
 
-export const handleErrorResponseStatus: TFunc<[IHandleResponseErrorStatus]> = ({ errorResponse, options }) => {
+export const handleErrorResponseStatus: TFunc<[IHandleResponseErrorStatus]> = ({
+    errorResponse,
+    options,
+}) => {
     const { code } = errorResponse;
 
     if (code === 422) {
@@ -12,7 +15,7 @@ export const handleErrorResponseStatus: TFunc<[IHandleResponseErrorStatus]> = ({
         return options.redirectForbidden();
     }
 
-    if (code === 400) {
+    if (code === 404) {
         return options.runSkip();
     }
 

@@ -1,13 +1,21 @@
-import axios, { AxiosStatic, AxiosResponse } from 'axios';
+import axios, {
+    AxiosStatic,
+    AxiosResponse,
+} from 'axios';
 
 import { __BACK_API_ORIGIN__ } from '../../../config/environment';
 import { IApiResponse } from '../../common/types';
-import { IControllerData, IControllerConfig, IControllerOptions } from './types';
+import { store } from '../../store';
+import {
+    IControllerData,
+    IControllerConfig,
+    IControllerOptions,
+} from './types';
 
 export const config: IControllerOptions = {
     baseURL: `${__BACK_API_ORIGIN__}/api`,
     // @ts-ignore
-    headers: { Accept: 'application/json' }
+    headers: { Accept: 'application/json' },
 };
 
 const controller = axios.create(config) as AxiosStatic;
@@ -21,18 +29,19 @@ controller.interceptors.request.use((config) => {
 });
 
 export const API_CONTROLLER = {
+    controller,
     get: <T>(url: string, conf: IControllerConfig = {}): Promise<AxiosResponse<T & IApiResponse>> =>
         controller.get<IApiResponse & T>(url, conf),
     post: <T>(
         url: string,
         data: IControllerData,
-        conf: IControllerConfig = {}
+        conf: IControllerConfig = {},
     ): Promise<AxiosResponse<T & IApiResponse>> => controller.post<IApiResponse & T>(url, data, conf),
     put: <T>(
         url: string,
         data: IControllerData,
-        conf: IControllerConfig = {}
+        conf: IControllerConfig = {},
     ): Promise<AxiosResponse<T & IApiResponse>> => controller.put<IApiResponse & T>(url, data, conf),
     delete: <T>(url: string, conf: IControllerConfig = {}): Promise<AxiosResponse<T & IApiResponse>> =>
-        controller.delete<IApiResponse & T>(url, conf)
+        controller.delete<IApiResponse & T>(url, conf),
 };
